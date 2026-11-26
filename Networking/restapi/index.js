@@ -65,6 +65,21 @@ app.put('/todos/:id', (req, res) => {
 
 // DELETE
 
+app.delete('/todos/:id', (req, res) => {
+  const { id } = req.params;
+
+  const index = todos.findIndex(todo => todo.id === id);
+
+  if (index >= 0) {
+    todos.splice(index, 1)
+  }
+
+  res.status(200).json({
+    message: "Todo deleted successfully!",
+    todos
+  });
+})
+
 const PORT = 5111;
 
 app.listen(PORT, () => {
