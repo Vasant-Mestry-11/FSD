@@ -68,7 +68,7 @@ app.put('/todos/:id', (req, res) => {
 app.delete('/todos/:id', (req, res) => {
   const { id } = req.params;
 
-  const index = todos.findIndex(todo => todo.id === id);
+  const index = todos.findIndex(todo => todo.id === +id);
 
   if (index >= 0) {
     todos.splice(index, 1)
