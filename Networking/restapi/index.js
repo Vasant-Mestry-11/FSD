@@ -47,6 +47,22 @@ app.post('/todos', (req, res) => {
 
 // UPDATE
 
+app.put('/todos/:id', (req, res) => {
+  const { title, completed } = req.body;
+
+  const { id } = req.params;
+
+  let index = todos.findIndex((todo) => todo.id === +id);
+
+  todos[index].title = title;
+  todos[index].completed = completed || false;
+
+  res.status(200).json({
+    message: "Todo updated successfully!",
+    todos
+  });
+})
+
 // DELETE
 
 const PORT = 5111;
